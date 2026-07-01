@@ -1,11 +1,5 @@
 apply plugin: 'com.android.application'
 
-// --- ZORUNLU AYAR: Özellikleri dosya okumadan buradan tanımlıyoruz ---
-project.ext {
-    set('android.useAndroidX', true)
-    set('android.enableJetifier', true)
-}
-
 android {
     namespace 'com.filipebarretto.androidhelloworld'
     compileSdk 34
@@ -26,5 +20,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // Sadece en güncel ve kararlı sürümü doğrudan belirtiyoruz
     implementation 'androidx.appcompat:appcompat:1.6.1'
 }
