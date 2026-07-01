@@ -28,3 +28,4 @@ jobs:
         with:
           name: app-debug
           path: AndroidHelloWorld/app/build/outputs/apk/debug/app-debug.apk
+
