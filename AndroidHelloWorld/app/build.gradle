@@ -1,24 +1,17 @@
-apply plugin: 'com.android.application'
-
-android {
-    compileSdkVersion 33
-
-    defaultConfig {
-        applicationId "com.filipebarretto.androidhelloworld"
-        minSdkVersion 16
-        targetSdkVersion 33
-        versionCode 1
-        versionName "1.0"
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
     }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+    dependencies {
+        // Gradle 9.x ile çalışan güncel Android Plugin
+        classpath 'com.android.tools.build:gradle:8.2.0'
     }
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    testImplementation 'junit:junit:4.13.2'
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
