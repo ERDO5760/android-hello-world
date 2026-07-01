@@ -7,19 +7,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up JDK 8
+
+      # En önemli kısım: Java 17 kullanacağız
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          java-version: '8'
+          java-version: '17'
           distribution: 'temurin'
-      - name: Install SDK 29
-        run: |
-          echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-29" "build-tools;29.0.3"
+
       - name: Build with Gradle
         run: |
           cd AndroidHelloWorld
           chmod +x gradlew
+          # SDKmanager hatalarını engellemek için artık SDK'yı zorla kurmuyoruz, 
+          # çünkü modern Gradle artık bunu kendi halledebiliyor.
           ./gradlew assembleDebug
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
