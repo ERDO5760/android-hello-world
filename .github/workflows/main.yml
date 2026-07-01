@@ -9,24 +9,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up JDK 17
+      - name: Set up JDK 8
         uses: actions/setup-java@v4
         with:
           java-version: '8'
           distribution: 'temurin'
 
-      - name: Find and Build with Gradle
+      - name: Accept Android Licenses and Install SDK
         run: |
-          if [ -f "gradlew" ]; then
-            chmod +x gradlew
-            ./gradlew assembleDebug
-          elif [ -f "AndroidHelloWorld/gradlew" ]; then
-            chmod +x AndroidHelloWorld/gradlew
-            cd AndroidHelloWorld && ./gradlew assembleDebug
-          else
-            echo "gradlew bulunamadı!"
-            exit 1
-          fi
+          mkdir -p $HOME/.android
+          touch $HOME/.android/repositories.cfg
+          yes | sdkmanager --licenses
+          sdkmanager "platforms;android-30" "build-tools;30.0.3"
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
