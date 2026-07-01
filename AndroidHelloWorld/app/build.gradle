@@ -1,26 +1,34 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 33
+    // buildToolsVersion satırını siliyoruz, Gradle bunu otomatik halledecek
 
     defaultConfig {
         applicationId "com.filipebarretto.androidhelloworld"
-        minSdkVersion 14
-        targetSdkVersion 30
+        minSdkVersion 16 // 14 çok eski, 16 yapmak sunucularda daha sorunsuzdur
+        targetSdkVersion 33
         versionCode 2
         versionName "1.0.1"
     }
+    
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    
+    // Modern Java desteği için gerekli
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    // 'compile' komutu eskidi, yerine 'implementation' kullanıyoruz
+    implementation 'com.android.support:appcompat-v7:28.0.0' 
 }
