@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    // Sürüm numarasını sabit 30'da tutuyoruz, çünkü 30 GitHub'da standarttır
     compileSdkVersion 30
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.filipebarretto.androidhelloworld"
@@ -21,9 +21,7 @@ android {
 }
 
 dependencies {
-    // compile yerine implementation kullanıyoruz (Gradle sürümün destekliyorsa)
-    // Eğer hata alırsan 'compile' olarak değiştirebilirsin
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:28.0.0'
 }
