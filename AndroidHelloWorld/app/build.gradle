@@ -1,25 +1,8 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        // Gradle 9.x ile çalışan güncel Android Plugin
-        classpath 'com.android.tools.build:gradle:8.2.0'
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
 apply plugin: 'com.android.application'
 
 android {
     namespace 'com.filipebarretto.androidhelloworld'
-    compileSdk 34 // En güncel hedef
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.filipebarretto.androidhelloworld"
