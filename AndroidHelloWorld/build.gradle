@@ -1,14 +1,4 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        // Gradle plugin sürümü
-        classpath 'com.android.tools.build:gradle:8.2.0'
-    }
-}
-
+// Boş kalsın veya sadece şu olsun:
 allprojects {
     repositories {
         google()
